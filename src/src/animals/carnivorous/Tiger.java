@@ -1,0 +1,17 @@
+package animals.carnivorous;
+
+import animals.actions.Run;
+import animals.actions.Voice;
+
+public class Tiger extends Carnivorous implements Run, Voice {
+
+    @Override
+    public String run() {
+        return "бежит";
+    }
+
+    @Override
+    public String voice() {
+        return "рычит";
+    }
+}
