@@ -2,6 +2,7 @@ package animals.carnivorous;
 
 import animals.actions.Fly;
 import animals.actions.Voice;
+import animals.food.Meat;
 
 public class Eagle extends Carnivorous implements Fly, Voice {
 
@@ -12,6 +13,10 @@ public class Eagle extends Carnivorous implements Fly, Voice {
 
     @Override
     public String voice() {
-        return "издает звук";
+        return "издает клекот";
+    }
+
+    public void eat(Meat meat) {
+        System.out.println("Орел ест: " + meat);
     }
 }

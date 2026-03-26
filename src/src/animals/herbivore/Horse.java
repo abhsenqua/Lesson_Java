@@ -2,9 +2,10 @@ package animals.herbivore;
 
 import animals.actions.Run;
 import animals.actions.Voice;
+import animals.food.Food;
 import animals.food.Grass;
 
-public class Elephant extends Herbivore implements Run, Voice {
+public class Horse extends Herbivore implements Voice, Run {
 
     @Override
     public String run() {
@@ -13,10 +14,15 @@ public class Elephant extends Herbivore implements Run, Voice {
 
     @Override
     public String voice() {
-        return "издает трубный звук";
+        return "фыркает";
+    }
+
+    @Override
+    public void eat(Food food) {
+        super.eat(food);
     }
 
     public void eat(Grass grass) {
-        System.out.println("Слон ест: " + grass);
+        System.out.println("Лошадь ест: " + grass);
     }
 }
