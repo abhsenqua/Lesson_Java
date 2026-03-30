@@ -1,16 +1,17 @@
 package animals.carnivorous;
 
 import animals.actions.Swim;
-import animals.food.Meat;
+import animals.food.Food;
+
 
 public class Shark extends Carnivorous implements Swim {
-
     @Override
     public String swim() {
-        return "плывет";
+        return getClass().getSimpleName() + " плывет";
     }
 
-    public void eat(Meat meat) {
-        System.out.println("Акула ест: " + meat);
+    @Override
+    public void eat(Food food) {
+        super.eat(food);
     }
 }

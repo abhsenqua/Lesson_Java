@@ -2,21 +2,21 @@ package animals.herbivore;
 
 import animals.actions.Run;
 import animals.actions.Voice;
-import animals.food.Grass;
+import animals.food.Food;
 
 public class Elephant extends Herbivore implements Run, Voice {
-
     @Override
     public String run() {
-        return "бежит";
+        return getClass().getSimpleName() + " бежит";
     }
 
     @Override
     public String voice() {
-        return "издает трубный звук";
+        return getClass().getSimpleName() + " издает трубный звук";
     }
 
-    public void eat(Grass grass) {
-        System.out.println("Слон ест: " + grass);
+    @Override
+    public void eat(Food food) {
+        super.eat(food);
     }
 }

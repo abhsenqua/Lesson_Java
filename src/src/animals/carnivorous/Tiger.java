@@ -2,21 +2,21 @@ package animals.carnivorous;
 
 import animals.actions.Run;
 import animals.actions.Voice;
-import animals.food.Meat;
+import animals.food.Food;
 
 public class Tiger extends Carnivorous implements Run, Voice {
-
     @Override
     public String run() {
-        return "бежит";
+        return getClass().getSimpleName() + " бежит";
     }
 
     @Override
     public String voice() {
-        return "рычит";
+        return getClass().getSimpleName() + " рычит";
     }
 
-    public void eat(Meat meat) {
-        System.out.println("Тигр ест: " + meat);
+    @Override
+    public void eat(Food food) {
+        super.eat(food);
     }
 }

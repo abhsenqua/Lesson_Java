@@ -5,7 +5,6 @@ import animals.food.Food;
 import animals.food.Grass;
 
 public abstract class Herbivore extends Animals {
-
     @Override
     public void eat(Food food) {
         if (food instanceof Grass) {

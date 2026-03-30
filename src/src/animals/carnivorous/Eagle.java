@@ -2,21 +2,21 @@ package animals.carnivorous;
 
 import animals.actions.Fly;
 import animals.actions.Voice;
-import animals.food.Meat;
+import animals.food.Food;
 
 public class Eagle extends Carnivorous implements Fly, Voice {
-
     @Override
     public String fly() {
-        return "летает";
+        return getClass().getSimpleName() + " летает";
     }
 
     @Override
     public String voice() {
-        return "издает клекот";
+        return getClass().getSimpleName() + " издает клекот";
     }
 
-    public void eat(Meat meat) {
-        System.out.println("Орел ест: " + meat);
+    @Override
+    public void eat(Food food) {
+        super.eat(food);
     }
 }
