@@ -5,9 +5,19 @@ import animals.food.Food;
 
 
 public class Shark extends Carnivorous implements Swim {
+    public Shark(int satiety) {
+        this.satiety = satiety;
+    }
+
     @Override
-    public String swim() {
-        return getClass().getSimpleName() + " плывет";
+    public void swim() {
+        satiety -= EnergyConsumption.SWIM.getConsumption();
+        if (checkHungry()) {
+            currentSatiety();
+        } else {
+            String action = EnergyConsumption.SWIM.getAction();
+            System.out.println(getClass().getSimpleName() + " " + action);
+        }
     }
 
     @Override

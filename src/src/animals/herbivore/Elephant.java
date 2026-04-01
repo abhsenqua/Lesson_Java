@@ -2,17 +2,30 @@ package animals.herbivore;
 
 import animals.actions.Run;
 import animals.actions.Voice;
+import animals.carnivorous.EnergyConsumption;
 import animals.food.Food;
 
-public class Elephant extends Herbivore implements Run, Voice {
+public class Elephant extends Herbivore implements Run,Voice {
     @Override
-    public String run() {
-        return getClass().getSimpleName() + " бежит";
+    public void run() {
+        satiety -= EnergyConsumption.VOICE.getConsumption();
+        if (checkHungry()) {
+            currentSatiety();
+        } else {
+            String action = EnergyConsumption.RUN.getAction();
+            System.out.println(getClass().getSimpleName() + " " + action);
+        }
     }
 
     @Override
-    public String voice() {
-        return getClass().getSimpleName() + " издает трубный звук";
+    public void voice() {
+        satiety -= EnergyConsumption.VOICE.getConsumption();
+        if (checkHungry()) {
+            currentSatiety();
+        } else {
+            String action = EnergyConsumption.VOICE.getAction();
+            System.out.println(getClass().getSimpleName() + " " + action);
+        }
     }
 
     @Override

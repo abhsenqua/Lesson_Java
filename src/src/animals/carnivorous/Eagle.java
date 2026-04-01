@@ -5,14 +5,30 @@ import animals.actions.Voice;
 import animals.food.Food;
 
 public class Eagle extends Carnivorous implements Fly, Voice {
-    @Override
-    public String fly() {
-        return getClass().getSimpleName() + " летает";
+    public Eagle(int satiety) {
+        this.satiety = satiety;
     }
 
     @Override
-    public String voice() {
-        return getClass().getSimpleName() + " издает клекот";
+    public void fly() {
+        satiety -= EnergyConsumption.FLY.getConsumption();
+        if (checkHungry()) {
+            currentSatiety();
+        } else {
+            String action = EnergyConsumption.FLY.getAction();
+            System.out.println(getClass().getSimpleName() + " " + action);
+        }
+    }
+
+    @Override
+    public void voice() {
+        satiety -= EnergyConsumption.VOICE.getConsumption();
+        if (checkHungry()) {
+            currentSatiety();
+        } else {
+            String action = EnergyConsumption.VOICE.getAction();
+            System.out.println(getClass().getSimpleName() + " " + action);
+        }
     }
 
     @Override

@@ -1,18 +1,36 @@
 package animals.herbivore;
 
+import animals.Animals;
 import animals.actions.Swim;
 import animals.actions.Voice;
+import animals.carnivorous.EnergyConsumption;
 import animals.food.Food;
 
 public class Duck extends Herbivore implements Swim, Voice {
-    @Override
-    public String swim() {
-        return getClass().getSimpleName() + " плывет";
+    public Duck(int satiety) {
+        this.satiety = satiety;
     }
 
     @Override
-    public String voice() {
-        return getClass().getSimpleName() + " крякает";
+    public void swim() {
+        satiety -= EnergyConsumption.SWIM.getConsumption();
+        if (checkHungry()) {
+            currentSatiety();
+        } else {
+            String action = EnergyConsumption.SWIM.getAction();
+            System.out.println(getClass().getSimpleName() + " " + action);
+        }
+    }
+
+    @Override
+    public void voice() {
+        satiety -= EnergyConsumption.VOICE.getConsumption();
+        if (checkHungry()) {
+            currentSatiety();
+        } else {
+            String action = EnergyConsumption.VOICE.getAction();
+            System.out.println(getClass().getSimpleName() + " " + action);
+        }
     }
 
     @Override
