@@ -1,7 +1,7 @@
 package animals.food;
 
 public class Meat extends Food {
-    MeatSize meatSize;
+    private MeatSize meatSize;
 
     public Meat(MeatSize meatSize) {
         this.meatSize = meatSize;
@@ -13,6 +13,12 @@ public class Meat extends Food {
 
     @Override
     public String toString() {
-        return "мясо";
+        return getMeatSize().getSize();
+    }
+
+    @Override
+    public int getEnergy() {
+        return getMeatSize().getEnergy();
+
     }
 }

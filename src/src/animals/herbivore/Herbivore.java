@@ -1,16 +1,13 @@
 package animals.herbivore;
 
 import animals.Animals;
-import animals.food.Food;
-import animals.food.Grass;
-import animals.food.Meat;
-import animals.food.MeatSize;
+import animals.food.*;
 
 public abstract class Herbivore extends Animals {
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         if (food instanceof Grass) {
-            addSatiety(getEnergyFromFood(food));
+            addSatiety(food.getEnergy());
             if (satiety >= 100) {
                 satiety = 100;
                 System.out.println("У животного: " + getClass().getSimpleName() + " максимум энергии: " + satiety);
@@ -19,13 +16,7 @@ public abstract class Herbivore extends Animals {
                 currentSatiety();
             }
         } else {
-            System.out.println("Неверный тип: " + food);
+           throw new WrongFoodException("Травоядные не едят мясо");
         }
-    }
-
-    public int getEnergyFromFood(Food food) {
-        MeatSize meatSize = ((Meat) food).getMeatSize();
-        int energy = meatSize.getEnergy();
-        return energy;
     }
 }

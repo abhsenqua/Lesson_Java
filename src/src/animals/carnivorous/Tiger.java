@@ -1,38 +1,43 @@
 package animals.carnivorous;
 
+import animals.AviarySize;
 import animals.actions.Run;
 import animals.actions.Voice;
 import animals.food.Food;
+import animals.food.WrongFoodException;
 
 public class Tiger extends Carnivorous implements Run, Voice {
-    public Tiger(int satiety) {
+    public Tiger(String name, int satiety) {
+        this.name = name;
         this.satiety = satiety;
+        setAviarySize(AviarySize.EXTRA_LARGE);
     }
 
     @Override
     public void run() {
-        satiety -= EnergyConsumption.RUN.getConsumption();
-        if (checkHungry()) {
-            currentSatiety();
-        } else {
-            String action = EnergyConsumption.RUN.getAction();
-            System.out.println(getClass().getSimpleName() + " " + action);
-        }
+        action(EnergyConsumption.RUN);
     }
 
     @Override
     public void voice() {
-        satiety -= EnergyConsumption.VOICE.getConsumption();
-        if (checkHungry()) {
-            currentSatiety();
-        } else {
-            String action = EnergyConsumption.VOICE.getAction();
-            System.out.println(getClass().getSimpleName() + " " + action);
-        }
+      action(EnergyConsumption.VOICE);
     }
 
     @Override
-    public void eat(Food food) {
-        super.eat(food);
+    public String toString() {
+        return "Tiger{" +
+                "name='" + name + '\'' +
+                ", satiety=" + satiety +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

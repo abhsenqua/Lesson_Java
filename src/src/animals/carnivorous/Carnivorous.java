@@ -3,28 +3,22 @@ package animals.carnivorous;
 import animals.Animals;
 import animals.food.Food;
 import animals.food.Meat;
-import animals.food.MeatSize;
+import animals.food.WrongFoodException;
 
 public abstract class Carnivorous extends Animals {
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         if (food instanceof Meat) {
-            addSatiety(getEnergyFromFood(food));
+            addSatiety(food.getEnergy());
             if (satiety >= 100) {
                 satiety = 100;
                 System.out.println("У животного: " + getClass().getSimpleName() + " максимум энергии: " + satiety);
             } else {
-                System.out.println(getClass().getSimpleName() + " ест " + ((Meat) food).getMeatSize().getSize());
+                System.out.println(getClass().getSimpleName() + " ест " + food);
                 currentSatiety();
             }
         } else {
-            System.out.println("Неверный тип: " + food);
+            throw new WrongFoodException("Хищники не едят траву");
         }
-    }
-
-        public int getEnergyFromFood(Food food) {
-        MeatSize meatSize = ((Meat) food).getMeatSize();
-        int energy = meatSize.getEnergy();
-        return energy;
     }
 }

@@ -1,10 +1,9 @@
 package animals.food;
 
 public enum MeatSize {
-
-    SMALL("маленький кусок", 10),
-    MEDIUM("средний кусок", 20),
-    LARGE("большой кусок", 30);
+    SMALL("маленький кусок мяса", 10),
+    MEDIUM("средний кусок мяса", 20),
+    LARGE("большой кусок мяса", 30);
 
     private String size;
     private int energy;
